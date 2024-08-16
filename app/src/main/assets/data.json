@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Demo1",
+    "price": 5,
+    "sold": false,
+    "image": "https://res.cloudinary.com/dmc7njn59/image/upload/v1711951533/pixasquare-4ojhpgKpS68-unsplash_wg5r5c.jpg"
+  },
+  {
+    "name": "Demo2",
+    "price": 10,
+    "sold": true,
+    "image": "https://res.cloudinary.com/dmc7njn59/image/upload/v1711951533/pixasquare-4ojhpgKpS68-unsplash_wg5r5c.jpg"
+  },
+  {
+    "name": "Demo3",
+    "price": 12,
+    "sold": false,
+    "image": "https://res.cloudinary.com/dmc7njn59/image/upload/v1711951533/pixasquare-4ojhpgKpS68-unsplash_wg5r5c.jpg"
+  },
+  {
+    "name": "Demo4",
+    "price": 14,
+    "sold": true,
+    "image": "https://res.cloudinary.com/dmc7njn59/image/upload/v1711951533/pixasquare-4ojhpgKpS68-unsplash_wg5r5c.jpg"
+  },
+  {
+    "name": "Demo5",
+    "price": 18,
+    "sold": false,
+    "image": "https://res.cloudinary.com/dmc7njn59/image/upload/v1711951533/pixasquare-4ojhpgKpS68-unsplash_wg5r5c.jpg"
+  },
+  {
+    "name": "Demo6",
+    "price": 25,
+    "sold": false,
+    "image": "https://res.cloudinary.com/dmc7njn59/image/upload/v1711951533/pixasquare-4ojhpgKpS68-unsplash_wg5r5c.jpg"
+  },
+  {
+    "name": "Demo7",
+    "price": 20,
+    "sold": true,
+    "image": "https://res.cloudinary.com/dmc7njn59/image/upload/v1711951533/pixasquare-4ojhpgKpS68-unsplash_wg5r5c.jpg"
+  }
+]
