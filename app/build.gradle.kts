@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.androidx.room.rxjava3)
     implementation(libs.gson)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.androidx.paging.runtime.ktx)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.room.guava)

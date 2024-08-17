@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         val repository = DataModelRepository(dao, application)
         val thisViewModel = ViewModelProvider(this, ViewModelFactory(application, repository)).get(DataModelViewModel::class.java)
 
-        thisViewModel.data!!.observe(this){
+        thisViewModel.pagedList.observe(this){
 
         }
 

@@ -1,6 +1,7 @@
 package com.kanahia.challenge
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -16,5 +17,5 @@ interface DataModelDAO {
     suspend fun insertAll(data: List<DataModel>)
 
     @Query("SELECT * FROM datamodel")
-    fun getTotalData() : LiveData<List<DataModel>>
+    fun getTotalData() : DataSource.Factory<Integer, DataModel>
 }
