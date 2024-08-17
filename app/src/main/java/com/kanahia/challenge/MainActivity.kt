@@ -23,33 +23,6 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        checkFile()
-    }
 
-    private fun checkFile(){
-        lifecycleScope.launch(Dispatchers.IO) {
-            val db = DataModelDatabase.getDatabase(this@MainActivity)
-            val dao = db.getDao()
-            var size = 0
-
-            dao.getTotalData().observe(this@MainActivity){
-                size = it.size
-            }
-
-            if (size == 0){
-                val fileName = "data.json"
-                val jsonString = application.assets.open(fileName).bufferedReader().use{
-                    it.readText()
-                }
-                val typeToken = TypeToken.getParameterized(
-                    MutableList::class.java,
-                    DataModel::class.java
-                )
-                val list: List<DataModel> = Gson().fromJson(jsonString, typeToken.type)
-                dao.insertAll(list)
-            }else{
-
-            }
-        }
     }
 }
