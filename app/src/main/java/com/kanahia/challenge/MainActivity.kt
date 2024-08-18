@@ -6,13 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kanahia.challenge.databinding.ActivityMainBinding
-import com.kanahia.challenge.models.DataModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,12 +25,17 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         val dao = DataModelDatabase.getDatabase(this).getDao()
         val repository = DataModelRepository(dao, application)
         val thisViewModel = ViewModelProvider(this, ViewModelFactory(application, repository)).get(DataModelViewModel::class.java)
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.setLayoutManager(GridLayoutManager(this@MainActivity, 3))
+        val adapter = DataRecyclerAdapter()
 
         thisViewModel.pagedList.observe(this){
-
+            adapter.submitList(it)
+            binding.recyclerView.adapter = adapter
         }
 
     }

@@ -1,5 +1,6 @@
 package com.kanahia.challenge
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,20 +11,25 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.kanahia.challenge.models.DataModel
 
 
 class DataRecyclerAdapter() :
     PagedListAdapter<DataModel, DataRecyclerAdapter.ViewHolder>(DataModelDiffCallback()) {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemImage: ImageView = itemView.findViewById(R.id.imageView)
-        var titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
-        var priceTextView: TextView = itemView.findViewById(R.id.priceTextView)
-        var saleTextView: TextView = itemView.findViewById(R.id.saleTextView)
+    class ViewHolder(itemView: View, private val context: Context) :
+        RecyclerView.ViewHolder(itemView) {
+        private var itemImage: ImageView = itemView.findViewById(R.id.imageView)
+        private var titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
+        private var priceTextView: TextView = itemView.findViewById(R.id.priceTextView)
+        private var saleTextView: TextView = itemView.findViewById(R.id.saleTextView)
 
-        fun bind(dataModel: DataModel){
-
+        fun bind(dataModel: DataModel) {
+            titleTextView.text = dataModel.name
+            priceTextView.text = dataModel.price.toString()
+            if (dataModel.sold) saleTextView.visibility = View.VISIBLE
+            Glide.with(context).load(dataModel.image).into(itemImage)
         }
     }
 
@@ -32,9 +38,9 @@ class DataRecyclerAdapter() :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v: View =
+        val view: View =
             LayoutInflater.from(parent.context).inflate(R.layout.recycler_view_item, parent, false)
-        return ViewHolder(v)
+        return ViewHolder(view, parent.context)
     }
 
     class DataModelDiffCallback : DiffUtil.ItemCallback<DataModel>() {
