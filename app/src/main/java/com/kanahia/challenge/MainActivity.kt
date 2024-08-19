@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         val dao = DataModelDatabase.getDatabase(this).getDao()
         val repository = DataModelRepository(dao, application)
-        val thisViewModel = ViewModelProvider(this, ViewModelFactory(application, repository)).get(DataModelViewModel::class.java)
+        val thisViewModel = ViewModelProvider(this, ViewModelFactory(application, repository))[DataModelViewModel::class.java]
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.setLayoutManager(GridLayoutManager(this@MainActivity, 3))
         val adapter = DataRecyclerAdapter()
