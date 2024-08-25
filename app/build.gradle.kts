@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id ("kotlin-kapt")
 }
 
 android {
@@ -42,7 +41,6 @@ android {
 dependencies {
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.compiler)
     implementation(libs.glide)
     implementation(libs.androidx.room.rxjava2)
     implementation(libs.androidx.room.rxjava3)
